@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>to do list</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+  body{
+    background:rgb(8, 8, 8);
+      }
+      #mydiv{
+      background: #ced8dc;
+      padding: 30px;
+    margin: 20px auto;
+    border-radius: 10px;
+    max-width: 400px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+    </style>
+</head>
+<body>
+    <div id="mydiv">
+    <h1>to do list</h1><br>
+    <h2>these are tasks to do</h2>
+    <ul id="list">
+        <li>task1</li> <button id="com">completed</button>
+        <li>task2</li> <button id="com">completed</button>
+        <li>task2</li> <button id="com">completed</button>
+    </ul>
+    <input type="text" id="myInput">
+    <button id="add"> add task </button>
+    <button id="remove"> delete task </button>
+    </div>
+</body>
+</html>
+<script>
+    $(document).ready(function(){
+       $("#add").click(function(){
+        let task = $("#myInput").val();
+        if(task){
+            $("#list").append("<li>"+task+"</li>");
+            $("#myInput").val();
+        }
+       });
+         $("#remove").click(function(){
+      $("#list li:first").remove();
+    });
+    });
+</script>
