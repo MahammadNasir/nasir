@@ -23,28 +23,51 @@
     <div id="mydiv">
     <h1>to do list</h1><br>
     <h2>these are tasks to do</h2>
-    <ul id="list">
-        <li>task1</li> 
-        <li>task2</li> 
-        <li>task2</li> 
+    <ul id="addTask">
+        <li>
+            <span id="task text">Task 1</span>
+            <button class="complete-btn">Complete</button>
+            <button class="delete">delete</button>
+        </li>
+        <li>
+            <span id="task text">Task 2</span>
+            <button class="complete-btn">Complete</button>
+            <button class="delete">delete</button>
+        </li>
+        <li>
+            <span id="task text">Task 3</span>
+            <button class="complete-btn">Complete</button>
+            <button class="delete">delete</button>
+        </li>
     </ul>
-    <input type="text" id="myInput">
+    <input type="text" id="taskInput">
     <button id="add"> add task </button>
-    <button id="remove"> delete task </button>
     </div>
 </body>
 </html>
 <script>
-    $(document).ready(function(){
-       $("#add").click(function(){
-        let task = $("#myInput").val();
-        if(task){
-            $("#list").append("<li>"+task+"</li>");
-            $("#myInput").val();
-        }
-       });
-         $("#remove").click(function(){
-      $("#list li:first").remove();
-    });
-    });
+  $(document).ready(function(){
+    $("#addTask").click(function(){
+  let task = $("#taskInput").val();
+  if(task !== ""){
+    $("#taskList").append(
+      `<li>${task}
+        <button class='complete-btn'>Complete</button>
+        <button class='delete'>Delete</button>
+      </li>`
+    );
+    $("#taskInput").val("");
+  }
+});
+
+// Mark as complete
+$("#taskList").on("click", ".complete-btn", function(){
+  $(this).parent().css("background-color","yellow");
+});
+
+// Delete
+$("#taskList").on("click", ".delete", function(){
+  $(this).parent().remove();
+});
+});
 </script>
